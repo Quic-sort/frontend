@@ -1,0 +1,39 @@
+.top{
+    display: flex;
+    justify-content: space-between;
+}
+
+.drop{
+    height: 5vh;
+    width: 20vw;
+}
+
+.items{
+    display: flex;
+    flex-direction: column;
+    gap: 3vh;
+}
+.filter{
+    display: none;
+}
+@media (max-width: 768px) {
+    .top{
+        display: flex;
+        justify-content: flex-start;
+        gap: 4vw;
+    }
+    .drop{
+        height: 6vh;
+        width: 28vw;
+        background-color: #F8F3FC;
+        color: black;
+        border: 1px solid #e8d3fa;
+    }
+    .filter{
+        display: block;
+    }
+    .heading{
+        display: none;
+    }
+    
+}

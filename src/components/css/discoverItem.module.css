@@ -1,0 +1,18 @@
+.item , .item2{
+    background-color: #F8F3FC;
+    padding: 1vh 3vh 1vh 3vh;
+    height: fit-content;
+    width: fit-content;
+    border-radius: 4vh 4vh 4vh 4vh;
+    margin-left: 2vw;
+}
+.btn{
+    max-width: fit-content;
+    display: flex;
+    flex-direction: row;
+}
+@media (min-width: 850px) {
+    .main{
+        max-width: 60vw;
+    }
+}

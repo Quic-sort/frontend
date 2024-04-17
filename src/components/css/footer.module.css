@@ -1,0 +1,22 @@
+.dark{
+    background-color: #282828;
+    color: white;
+    margin-left: 0;
+    margin-right: 0;
+    min-width: 100vw;
+}
+.btn{
+    background-color: #EC7F6A;
+    font-weight: 600;
+    color: white;
+}
+.btn:hover{
+    background-color: #fe5b3a;
+}
+.border{
+    border-top: 2px solid rgb(69, 69, 69);
+}
+.logo{
+    height: 2vw;
+    width: 2vw;
+}

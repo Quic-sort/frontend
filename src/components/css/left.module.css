@@ -1,0 +1,23 @@
+.main{
+    background-color: white;
+    max-height: fit-content;
+}
+
+.results{
+    display: flex;
+    justify-content: center;
+}
+.btn{
+    color: rgba(0,0,0,0.6);
+    outline: none;
+    border: none;
+    background-color: white;
+    
+}
+.btn:hover{
+    background-color: rgb(231, 230, 230);
+}
+.cont{
+    position: sticky;
+    top:1vh;
+}

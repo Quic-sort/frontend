@@ -15,10 +15,10 @@ function WishlistCenter() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const url = process.env.BACKEND_URL + "discover";
-        console.log(url)
-        const response = await fetch("http://localhost:5000/discover");
-        console.log(response)
+        const url = process.env.REACT_APP_BACKEND_URL + "discover";
+        // console.log(process.env.REACT_APP_BACKEND_URL)
+        const response = await fetch(url);
+        
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
@@ -49,10 +49,9 @@ function WishlistCenter() {
           <option value="3">Three</option>
         </select>}
       </div>
+      {loading && <div className="d-flex justify-content-center"> <Loader /></div>}
       <div className={" " + styles.items}>
-        { loading ?
-          <Loader />
-          :<>
+        { !loading && <>
             {data.map((item)=>{
                return <WishlistItems data={item} />
             })}

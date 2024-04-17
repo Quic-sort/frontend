@@ -14,9 +14,7 @@ import GetStringList from "../getStringList";
 function WishlistItems(props) {
 
   const {data} = props;
-  const req = data.requirments;
-  // if(req)
-  console.log(req.length)
+ 
   const getDate = () =>{
     // Given date in the format "MM/DD/YY"
     const givenDate = new Date(data.job_posting_date);

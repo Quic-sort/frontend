@@ -7,7 +7,6 @@ function Loader() {
     const override= {
         display: "flex",
         margin: "20 0 0 0",
-        borderColor: "red",
         "justify-content":"center"
     };
 

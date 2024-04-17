@@ -1,10 +1,61 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import styles from "./mvp.module.css";
 import image1 from "../images/landing/image1.jpg";
 import WishlistCenter from "../home-assets/wishlistCenter";
 import logo from "../images/Vector.svg"
+import Loader from "../loader";
 
 function Home() {
+
+  const [searchTerm, setSearchTerm] = useState('');
+  const [data, setData] = useState([]);
+  const [loading,setLoading] = useState(true);
+  
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const url = process.env.REACT_APP_BACKEND_URL + "discover";
+        // console.log(process.env.REACT_APP_BACKEND_URL)
+        const response = await fetch(url);
+        
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const jsonData = await response.json();
+        setData(jsonData);
+        setLoading(false);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+  
+  const handleSubmit = async(e) =>{
+    e.preventDefault();
+
+    try {
+      const url = process.env.REACT_APP_BACKEND_URL + `discover?q=${encodeURIComponent(searchTerm)}`;
+      setLoading(true);
+      // console.log(process.env.REACT_APP_BACKEND_URL)
+      const response = await fetch(url);
+      
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const jsonData = await response.json();
+      setData(jsonData);
+      setLoading(false);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  }
+
+  const handleChange = (e) => {
+    setSearchTerm(e.target.value);
+  };
+
   return (
     <div className={`${styles.main} my-3`}>
       <div className={`${styles.item} px-3`}>
@@ -26,18 +77,20 @@ function Home() {
         </span>
       </div>
     <div className={`${styles.search}`}>
-    <form className="d-flex flex-row" role="search">
-        <input className={"form-control border boder-dark me-4 rounded-5 "+ styles.input} type="search" placeholder="Enter internship title here" aria-label="Search"/>
+    <form className="d-flex flex-row" role="search" onSubmit={handleSubmit}>
+        <input className={"form-control border boder-dark me-4 rounded-5 "+ styles.input} type="search" placeholder="Enter internship title here" aria-label="Search" onChange={handleChange} value={searchTerm}/>
         <button className={"btn rounded-5 fw-bold " + styles.Sbtn} type="submit"><span><img style={{height:"20px"}} src={logo} alt="logo"/></span> Search</button>
       </form>
     </div>
+      {loading && <div className="d-flex justify-content-center mt-5"> <Loader /></div>}
       <div className={`${styles.details} px-2`}>
+      
         <div className={`${styles.content}`}>
-          <WishlistCenter />
+          {!loading && <WishlistCenter data={data} />}
         </div>
 
         <div className={`${styles.right} mt-5 pt-3`}>
-          <div
+          {!loading && <div
             className={
               "modal-content rounded-2 shadow px-2 py-2 " + styles.container + " ms-4"
             }
@@ -67,7 +120,7 @@ function Home() {
                 </button>
               </form>
             </div>
-          </div>
+          </div>}
         </div>
       </div>
     </div>

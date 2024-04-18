@@ -14,7 +14,7 @@ function WishlistCenter(props) {
       <div className={"mb-3 " + styles.top}>
         {<h3 className={styles.heading}>{data.length} Jobs</h3>}
         <Filters />
-        <select
+        {/* <select
           className={"form-select " + styles.drop}
           aria-label="Default select example"
         >
@@ -22,7 +22,7 @@ function WishlistCenter(props) {
           <option value="1">One</option>
           <option value="2">Two</option>
           <option value="3">Three</option>
-        </select>
+        </select> */}
       </div>
       <div className={" " + styles.items}>
         {<>

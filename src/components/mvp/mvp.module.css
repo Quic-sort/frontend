@@ -72,9 +72,29 @@
 .input{
     width: 40vw;
 }
+
+.form{
+    display: flex;
+    flex-direction: row;
+}
 @media (min-width:560px){
     .item{
         margin: 0 3rem;
+    }
+}
+
+@media(max-width:560px){
+    
+    .form{
+        flex-direction: column;
+        gap: 2vh;
+    }
+    .input{
+        margin-right: 0 !important;
+        width: 80vw !important;
+    }
+    .Sbtn{
+        margin-right: 0 !important;
     }
 }
 @media(max-width:810px) {

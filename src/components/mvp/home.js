@@ -77,9 +77,9 @@ function Home() {
         </span>
       </div>
     <div className={`${styles.search}`}>
-    <form className="d-flex flex-row" role="search" onSubmit={handleSubmit}>
-        <input className={"form-control border boder-dark me-4 rounded-5 "+ styles.input} type="search" placeholder="Enter internship title here" aria-label="Search" onChange={handleChange} value={searchTerm}/>
-        <button className={"btn rounded-5 fw-bold " + styles.Sbtn} type="submit"><span><img style={{height:"20px"}} src={logo} alt="logo"/></span> Search</button>
+    <form className={`${styles.form}`} role="search" onSubmit={handleSubmit}>
+        <input className={"form-control border border-2 border-dark me-4 rounded-5 "+ styles.input} type="search" placeholder="Enter internship title here" aria-label="Search" onChange={handleChange} value={searchTerm}/>
+        <button className={"btn rounded-5 fw-bold me-4 " + styles.Sbtn} type="submit"><span><img style={{height:"20px"}} src={logo} alt="logo"/></span> Search</button>
       </form>
     </div>
       {loading && <div className="d-flex justify-content-center mt-5"> <Loader /></div>}

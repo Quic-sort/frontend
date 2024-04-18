@@ -38,7 +38,7 @@ function Home() {
     try {
       const url = process.env.REACT_APP_BACKEND_URL + `discover?q=${encodeURIComponent(searchTerm)}`;
       setLoading(true);
-      // console.log(process.env.REACT_APP_BACKEND_URL)
+      
       const response = await fetch(url);
       
       if (!response.ok) {
@@ -56,6 +56,10 @@ function Home() {
     setSearchTerm(e.target.value);
   };
 
+  const HandleFeedbackSubmit = (e)=>{
+    e.preventDefault();
+    window.open(process.env.REACT_APP_FEEDBACK_LINK, '_blank');
+  }
   return (
     <div className={`${styles.main} my-3`}>
       <div className={`${styles.item} px-3`}>
@@ -108,7 +112,7 @@ function Home() {
               <small className="text-body-secondary text-dark">
               "Could you share how your experience was and how satisfied you are with our website? Your feedback helps us improve!"
               </small>
-              <form className="">
+              <form className="" onSubmit={HandleFeedbackSubmit}>
                 <button
                   className={
                     "w-100 mb-2 btn btn-lg rounded-3 btn-primary my-3 " +

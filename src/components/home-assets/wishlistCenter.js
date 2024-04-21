@@ -8,7 +8,6 @@ function WishlistCenter(props) {
   // const symbol2 = ">";
 
   const {data} = props;
-
   return (
     <div className="px-3 py-3 mt-3">
       <div className={"mb-3 " + styles.top}>

@@ -41,8 +41,23 @@ function WishlistItems(props) {
     return `${months} months ago`
   }
 
-  const handleApply = ()=>{
+  const handleApply = async()=>{
     window.open(data.apply_link, '_blank');
+    
+    try {
+      const url = process.env.REACT_APP_BACKEND_URL + `apply-analytics/${data.job_id}`;
+      
+      const response = await fetch(url,{
+        method:"POST"
+      });
+      
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
   }
   return (
     <div className={" "+styles.main}>

@@ -80,6 +80,11 @@ function Home() {
           <img className={styles.img} src={image1} alt="person" />{" "}
         </span>
       </div>
+      {/* <div className="d-flex flex-column justify-content-center align-items-center">
+      <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7186948821661188098" height="643" width="504" frameborder="0" allowfullscreen="" title="Embedded post"></iframe>
+        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7186981138068901888" height="1456" width="504" frameborder="20" allowfullscreen="" title="Embedded post"></iframe>
+        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7186978308121661440" height="1183" width="504" frameborder="20" allowfullscreen="" title="Embedded post"></iframe>
+      </div> */}
     <div className={`${styles.search}`}>
     <form className={`${styles.form}`} role="search" onSubmit={handleSubmit}>
         <input className={"form-control border border-2 border-dark me-4 rounded-5 "+ styles.input} type="search" placeholder="Enter internship title here" aria-label="Search" onChange={handleChange} value={searchTerm}/>

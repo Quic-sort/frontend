@@ -6,8 +6,13 @@
 }
 
 .logo{
-    margin-left: 1vw;
+    margin-left: 1vw; 
     margin-right: 6vw;
+}
+
+.active{
+    font-weight: bold !important;
+    text-decoration: underline !important;
 }
 
 @media (max-width: 768px) {

@@ -6,7 +6,7 @@ import Filters from "./filter";
 function WishlistCenter(props) {
   // const symbol1 = "<";
   // const symbol2 = ">";
-
+  
   const {data} = props;
   return (
     <div className="px-3 py-3 mt-3">

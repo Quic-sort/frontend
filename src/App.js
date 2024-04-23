@@ -11,6 +11,7 @@ import Creators from "./components/creators";
 // import LandingPage from "./components/landingPage";
 import Profile from "./components/profile";
 import Home from "./components/mvp/home";
+import PostHome from "./components/posts/postHome";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <Route exact path="/login" element={<Login />}></Route>
           <Route exact path="/register" element={<SignUp />}></Route>
           <Route exact path="/profile" element={<Profile />}></Route>
+          <Route exact path="/curated-posts" element={<PostHome />}></Route>
         </Routes>
         <Footer />
       </div>

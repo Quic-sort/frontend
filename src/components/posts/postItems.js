@@ -1,72 +1,64 @@
 import React from "react";
-import styles from "../css/items.module.css";
-import mapPinLine from "../images/MapPinLine.jpg";
-import clock from "../images/Clock.jpg";
-import disc from "../images/disc.jpg";
-import Link from "../images/link.jpg";
-// import mail from "../images/mail.jpg";
-// import person from "../images/user.jpg";
-// import Linkedin from "../images/linkedin.jpg";
-import elipse from "../images/Ellipse.jpg";
-import DiscoverItems from "./discoverItem";
-import GetStringList from "../getStringList";
+import styles from "./css/postItem.module.css";
+// import GetStringList from "../getStringList";
 
-function WishlistItems(props) {
+function PostItems(props) {
+  const { data } = props;
+  //   const getDate = () =>{
+  //     // Given date in the format "MM/DD/YY"
+  //     const givenDate = new Date(data.job_posting_date);
 
-  const {data} = props;
- 
-  const getDate = () =>{
-    // Given date in the format "MM/DD/YY"
-    const givenDate = new Date(data.job_posting_date);
+  //     // Current date
+  //     const currentDate = new Date();
 
-    // Current date
-    const currentDate = new Date();
+  //     // Calculate the difference in milliseconds
+  //     const differenceInMilliseconds = currentDate - givenDate;
 
-    // Calculate the difference in milliseconds
-    const differenceInMilliseconds = currentDate - givenDate;
+  //     // Convert milliseconds to days and months
+  //     const millisecondsInDay = 1000 * 60 * 60 * 24; // Number of milliseconds in a day
+  //     const millisecondsInMonth = millisecondsInDay * 30.436875; // Average number of milliseconds in a month (30.436875 days)
 
-    // Convert milliseconds to days and months
-    const millisecondsInDay = 1000 * 60 * 60 * 24; // Number of milliseconds in a day
-    const millisecondsInMonth = millisecondsInDay * 30.436875; // Average number of milliseconds in a month (30.436875 days)
+  //     var days = Math.floor(differenceInMilliseconds / millisecondsInDay);
+  //     const months = Math.floor(differenceInMilliseconds / millisecondsInMonth);
+  //     if(months===0){
+  //       if(days===0){
+  //         days = 1;
+  //       }
+  //       return `${days} days ago`;
+  //     }
 
-    var days = Math.floor(differenceInMilliseconds / millisecondsInDay);
-    const months = Math.floor(differenceInMilliseconds / millisecondsInMonth);
-    if(months===0){
-      if(days===0){
-        days = 1;
-      }
-      return `${days} days ago`;
+  //     return `${months} months ago`
+  //   }
+    const getLink = ()=>{
+        const url = process.env.REACT_APP_LINKEDIN_IFRAME + data.post_id;
+
+        return url
     }
+  const handleApply = async () => {
+    const link = process.env.REACT_APP_LINKEDIN_POST_LINK + data.post_id;
+    window.open(link, "_blank");
 
-    return `${months} months ago`
-  }
-
-  const handleApply = async()=>{
-    window.open(data.apply_link, '_blank');
-    
     try {
-      const url = process.env.REACT_APP_BACKEND_URL + `jobs/apply-analytics/${data.job_id}`;
-      
-      const response = await fetch(url,{
-        method:"POST"
-      });
-      
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      
+        const url = process.env.REACT_APP_BACKEND_URL + `posts/apply-analytics/${data.job_id}`;
+        const response = await fetch(url,{
+          method:"POST"
+        });
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
     } catch (error) {
-      console.error('Error fetching data:', error);
+      console.error("Error fetching data:", error);
     }
-  }
+  };
   return (
-    <div className={" "+styles.main}>
+    <div className={" " + styles.main}>
       <div className="col">
-        <div class="card card-cover h-100 rounded-4 shadow-lg mb-0">
+        <div class={"card card-cover h-100 rounded-4 shadow-lg mb-0 " + styles.width}>
           <div class="d-flex flex-column h-100 px-4 py-4 pb-3 text-shadow-1">
             <ul class="d-flex list-unstyled mt-auto mb-0">
               <li className="me-auto">
-                <p className="fs-4">{data.company}</p>
+                <h3>{data.title}</h3>
+                {/* <p className="fs-4">{data.company}</p> */}
               </li>
               {/* <li class={"d-flex align-items-center "}>
                 <button className={styles.item}>
@@ -161,139 +153,17 @@ function WishlistItems(props) {
               </li>
             </ul>
 
-            <h3>{data.title}</h3>
 
-            <ul class={"list-unstyled mt-auto d-flex flex-wrap"}>
-              {data.type_of_intern && (<>
-              <li className={"me-2 " + styles.text}>
-                <span className="me-2 mb-1">
-                  <img src={mapPinLine} alt="map" />
-                </span>
-                {data.type_of_intern}
-              </li>
-              </>)}
-              {data.location && (<>
-                { data.type_of_intern && <li className="mx-3">
-                <span>
-                  <img src={elipse} alt="dot" />
-                </span>
-              </li>}
-              <li className={"me-2 " + styles.text}>
-                <span className="me-2 mb-1">
-                  <img src={disc} alt="map" />
-                </span>
-                {data.location}
-              </li>
-              </>) }
-              {data.job_posting_date && (<>
-
-              <li className="mx-3">
-                <span>
-                  <img src={elipse} alt="dot" />
-                </span>
-              </li>
-              <li className="me-2">
-                <span className="me-2 mb-1">
-                  <img src={clock} alt="folder" />
-                </span>
-                {getDate()}
-              </li>
-              </>)}
-
-              {data.stipend && (<>
-              <li className="mx-3">
-                <span>
-                  <img src={elipse} alt="dot" />
-                </span>
-              </li>
-
-              <li className={"me-2 " + styles.text}>
-                <span className="me-2 mb-1">
-                  <img src={disc} alt="folder" />
-                </span>{" "}
-                {data.stipend}
-              </li>
-              </>)}
-
-              {data.site_name && (<>
-              <li className="mx-3">
-                <span>
-                  <img src={elipse} alt="dot" />
-                </span>
-              </li>
-
-              <li className="me-2">
-                <span className="me-2 mb-1">
-                  <img src={Link} alt="folder" />
-                </span>{" "}
-                {data.site_name}
-              </li>
-              </>)}
-
-              {data.duration && (<>
-              <li className="mx-3">
-                <span>
-                  <img src={elipse} alt="dot" />
-                </span>
-              </li>
-              <li className="me-2">
-                <span className="me-2 mb-1">
-                  <img src={disc} alt="folder" />
-                </span>{" "}
-                {data.duration}
-              </li>
-              </>)}
-            </ul>
-
-            {/* <ul class="d-flex list-unstyled mt-auto">
-              <li className="me-2">
-                <span className="me-2 mb-1">
-                  <img src={mail} alt="map" />
-                </span>
-                abc@gmail.com
-              </li>
-
-              <li className="mx-3">
-                <span>
-                  <img src={elipse} alt="dot" />
-                </span>
-              </li>
-
-              <li className="me-2">
-                <span className="me-2 mb-1">
-                  <img src={person} alt="folder" />
-                </span>
-                Name
-              </li>
-
-              <li className="mx-3">
-                <span>
-                  <img src={elipse} alt="dot" />
-                </span>
-              </li>
-
-              <li className="me-2">
-                <span className="me-2 mb-1">
-                  <img src={Linkedin} alt="folder" />
-                </span>{" "}
-                linkedin
-              </li>
-            </ul> */}
-            {/* <!-- Button trigger modal --> */}
             <button
               type="button"
               class={"btn " + styles.modalbtn}
               data-bs-toggle="modal"
               data-bs-target={"#staticBackdrop" + data.job_id}
-            >
-              {data.requirments.length !==0 &&(<><h6>Requirements:</h6><ul>
-                {GetStringList(data.requirments)}
-                </ul> </>) }
-              {data.requirments.length ===0 && (<>
-                <h6>Responsibility:</h6><ul>
-                {GetStringList(data.responsibility)}
-                </ul>
-              </>)}
+            >  
+            <div>
+
+              {data.content}
+            </div>
             </button>
 
             {/* <!-- Modal --> */}
@@ -313,21 +183,29 @@ function WishlistItems(props) {
                       class={"modal-title ms-4 " + styles.head}
                       id={"staticBackdrop" + data.job_id + "Label"}
                     >
-                      Job Description
+                      Post Source
                     </h1>
                   </div>
                   <hr
                     className="mt-0 mb-4 mx-4"
                     style={{ "border-color": "red", "border-width": "3px" }}
                   />
-                  <div class="modal-body">
-                    <DiscoverItems key={data.job_id} data={data}/>
+                  <div class="modal-body d-flex justify-content-center align-items-center">
+                    <iframe
+                      src={getLink()}
+                      height="343"
+                      width="504"
+                      frameborder="0"
+                      allowfullscreen=""
+                      title="Embedded post"
+                      className="border border-2 shadow-sm p-3 mb-5 bg-white rounded"
+                    ></iframe>
                   </div>
                   <hr
                     className="mt-0 mb-4 mx-4"
                     style={{ "border-color": "red", "border-width": "3px" }}
                   />
-                  <div class="modal-footer" style={{"border":"none"}}>
+                  <div class="modal-footer" style={{ border: "none" }}>
                     <button
                       type="button"
                       class="btn btn-secondary"
@@ -421,7 +299,11 @@ function WishlistItems(props) {
                       </span>
                       Mark as done
                     </button> */}
-                    <button type="button" class="btn btn-primary" onClick={handleApply}>
+                    <button
+                      type="button"
+                      class="btn btn-primary"
+                      onClick={handleApply}
+                    >
                       <span className="me-2">
                         <svg
                           height={"1.4rem"}
@@ -459,4 +341,4 @@ function WishlistItems(props) {
   );
 }
 
-export default WishlistItems;
+export default PostItems;

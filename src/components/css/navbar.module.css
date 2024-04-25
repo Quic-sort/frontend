@@ -12,7 +12,7 @@
 
 .active{
     font-weight: bold !important;
-    text-decoration: underline !important;
+    /* text-decoration: underline !important; */
 }
 
 @media (max-width: 768px) {

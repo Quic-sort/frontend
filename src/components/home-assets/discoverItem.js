@@ -4,9 +4,6 @@ import mapPinLine from "../images/MapPinLine.jpg";
 import clock from "../images/Clock.jpg";
 import disc from "../images/disc.jpg";
 import Link from "../images/link.jpg";
-// import mail from "../images/mail.jpg";
-// import person from "../images/user.jpg";
-// import Linkedin from "../images/linkedin.jpg";
 import elipse from "../images/Ellipse.jpg";
 import GetStringList from "../getStringList";
 

@@ -1,5 +1,5 @@
 import "./App.css";
-import { BrowserRouter as Router, Routes, Route , useLocation } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route , useLocation , Navigate } from "react-router-dom";
 import Discover from "./components/discover";
 import Wishlist from "./components/wishlist";
 import Navbar from "./components/navbar";
@@ -35,7 +35,8 @@ function App() {
       <div className="App">
         <Navbar />
         <Routes>
-          <Route exact path="/" element={<Home />}></Route>
+          <Route path="/" element={<Navigate replace to="/jobs" />} />
+          <Route exact path="/jobs" element={<Home />}></Route>
           <Route exact path="/discover" element={<Discover />}></Route>
           <Route exact path="/wishlist" element={<Wishlist />}></Route>
           <Route exact path="/tools" element={ <Tools /> }></Route>
@@ -47,6 +48,7 @@ function App() {
         </Routes>
         <Footer />
       </div>
+      {/* <Redirect from="/" to="/jobs" /> */}
     </Router>
   );
 }

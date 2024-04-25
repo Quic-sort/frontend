@@ -1,10 +1,15 @@
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import logo from "./images/Logo.jpg";
 import styles from "./css/navbar.module.css"
 const Navbar = () => {
   
-  
+  const location = useLocation();
+
+  const getActiveClass = (path) => {
+    return location.pathname === path ? styles.active : styles.link;
+  }
+
   return (
     <div>
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -47,11 +52,11 @@ const Navbar = () => {
               </li> */}
               <li  className={`nav-item ` }>
                 
-                <NavLink exact to="/"  activeClassName={styles.active} className="nav-link">Curated Jobs</NavLink>
+                <NavLink exact to="/jobs" className={getActiveClass("/jobs") + ' nav-link'} >Curated Jobs</NavLink>
               </li>
               <li className={`  nav-item` }>
                 
-                <NavLink  to="/curated-posts" activeClassName={styles.active} className="nav-link" >Curated Posts</NavLink>
+                <NavLink  to="/curated-posts" className={getActiveClass("/curated-posts")  + ' nav-link'}>Curated Posts</NavLink>
               </li>
             </ul>
             {/* <div className="d-flex mt-2" role="search">

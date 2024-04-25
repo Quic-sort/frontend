@@ -17,6 +17,7 @@
 
 .modalbtn{
     text-align: left;
+    padding: 0;
 }
 .modal{
     background-color: #ffffff;

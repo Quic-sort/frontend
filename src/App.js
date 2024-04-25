@@ -12,7 +12,7 @@ import Creators from "./components/creators";
 import Profile from "./components/profile";
 import Home from "./components/mvp/home";
 import PostHome from "./components/posts/postHome";
-import ReactGA from 'react-ga'; // Use react-ga4 for Google Analytics 4
+import ReactGA from 'react-ga4'; // Use react-ga4 for Google Analytics 4
 import React, { useEffect } from 'react';
 
 const TRACKING_ID = process.env.REACT_APP_GA_LINK; // Replace with your GA4 Measurement ID

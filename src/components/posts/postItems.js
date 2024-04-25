@@ -41,7 +41,7 @@ function PostItems(props) {
     try {
         const url = process.env.REACT_APP_BACKEND_URL + `posts/apply-analytics/${data.job_id}`;
         const response = await fetch(url,{
-          method:"POST"
+          method:"PATCH"
         });
         if (!response.ok) {
           throw new Error('Network response was not ok');

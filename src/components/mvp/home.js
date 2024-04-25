@@ -14,7 +14,7 @@ function Home() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const url = process.env.REACT_APP_BACKEND_URL + "discover";
+        const url = process.env.REACT_APP_BACKEND_URL + "jobs";
         // console.log(process.env.REACT_APP_BACKEND_URL)
         const response = await fetch(url);
         
@@ -36,7 +36,7 @@ function Home() {
     e.preventDefault();
 
     try {
-      const url = process.env.REACT_APP_BACKEND_URL + `discover?q=${encodeURIComponent(searchTerm)}`;
+      const url = process.env.REACT_APP_BACKEND_URL + `jobs?q=${encodeURIComponent(searchTerm)}`;
       setLoading(true);
       
       const response = await fetch(url);

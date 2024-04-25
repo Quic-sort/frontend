@@ -48,7 +48,7 @@ function WishlistItems(props) {
       const url = process.env.REACT_APP_BACKEND_URL + `jobs/apply-analytics/${data.job_id}`;
       
       const response = await fetch(url,{
-        method:"POST"
+        method:"PATCH"
       });
       
       if (!response.ok) {

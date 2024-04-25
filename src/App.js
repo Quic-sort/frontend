@@ -1,5 +1,5 @@
 import "./App.css";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route , useLocation } from "react-router-dom";
 import Discover from "./components/discover";
 import Wishlist from "./components/wishlist";
 import Navbar from "./components/navbar";
@@ -12,10 +12,26 @@ import Creators from "./components/creators";
 import Profile from "./components/profile";
 import Home from "./components/mvp/home";
 import PostHome from "./components/posts/postHome";
+import ReactGA from 'react-ga'; // Use react-ga4 for Google Analytics 4
+import React, { useEffect } from 'react';
+
+const TRACKING_ID = process.env.REACT_APP_GA_LINK; // Replace with your GA4 Measurement ID
+ReactGA.initialize(TRACKING_ID);
+
+function TrackPageViews() {
+  const location = useLocation();
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: location.pathname + location.search });
+  }, [location]);
+
+  return null;
+}
 
 function App() {
   return (
     <Router>
+    <TrackPageViews />
       <div className="App">
         <Navbar />
         <Routes>

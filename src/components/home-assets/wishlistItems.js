@@ -185,7 +185,7 @@ function WishlistItems(props) {
                 {data.location}
               </li>
               </>) }
-              {data.job_posting_date && (<>
+              {/* {data.job_posting_date && (<>
 
               <li className="mx-3">
                 <span>
@@ -198,7 +198,7 @@ function WishlistItems(props) {
                 </span>
                 {getDate()}
               </li>
-              </>)}
+              </>)} */}
 
               {data.stipend && (<>
               <li className="mx-3">
@@ -230,7 +230,7 @@ function WishlistItems(props) {
               </li>
               </>)}
 
-              {data.duration && (<>
+              {/* {data.duration && (<>
               <li className="mx-3">
                 <span>
                   <img src={elipse} alt="dot" />
@@ -242,7 +242,7 @@ function WishlistItems(props) {
                 </span>{" "}
                 {data.duration}
               </li>
-              </>)}
+              </>)} */}
             </ul>
 
             {/* <ul class="d-flex list-unstyled mt-auto">
@@ -285,15 +285,10 @@ function WishlistItems(props) {
               class={"btn " + styles.modalbtn}
               data-bs-toggle="modal"
               data-bs-target={"#staticBackdrop" + data.job_id}
-            >
-              {data.requirments.length !==0 &&(<><h6>Requirements:</h6><ul>
-                {GetStringList(data.requirments)}
-                </ul> </>) }
-              {data.requirments.length ===0 && (<>
-                <h6>Responsibility:</h6><ul>
-                {GetStringList(data.responsibility)}
-                </ul>
-              </>)}
+            > <div>
+
+              {GetStringList(data.summmary)}
+            </div>
             </button>
 
             {/* <!-- Modal --> */}

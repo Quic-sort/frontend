@@ -9,7 +9,7 @@ import GetStringList from "../getStringList";
 
 function DiscoverItems(props) {
   const {data} = props;
-
+  console.log(data.total_jd)
   const getDate = () =>{
     // Given date in the format "MM/DD/YY"
     const givenDate = new Date(data.job_posting_date);
@@ -45,14 +45,14 @@ function DiscoverItems(props) {
               <li className="me-auto">
                 <p className="fs-4">{data.company}</p>
               </li>
-              <li className="me-2">
+              {/* <li className="me-2">
                 <div className={"px-2 py-1 card card-cover rounded-5 shadow-sm mb-0 "+ styles.btn}>
                 <span className="me-2 mb-1 ">
                   <img src={clock} alt="folder" />
                 </span>
                     {getDate()}
                 </div>
-              </li>
+              </li> */}
             </ul>
 
             <h3>{data.title}</h3>
@@ -96,7 +96,7 @@ function DiscoverItems(props) {
               
               </>)}
 
-              {data.duration && (<>
+              {/* {data.duration && (<>
               <li className="mx-3">
                 <span>
                   <img src={elipse} alt="dot" />
@@ -109,7 +109,7 @@ function DiscoverItems(props) {
                 </span>{" "}
                 {data.duration}
               </li>
-              </>)}
+              </>)} */}
             </ul>
 
             {/* <ul class="d-flex flex-wrap list-unstyled mt-auto">
@@ -146,18 +146,10 @@ function DiscoverItems(props) {
                 data.linkedin
               </li>
             </ul> */}
+              <div>
 
-            { data.requirments && <div> <h5>Requirements:</h5><ul>
-                {GetStringList(data.requirments)}
-                </ul> </div>}
-            {data.company_details && <div> <h5>Company Details:</h5> <p>{data.company_details}</p> </div>}
-            { data.responsibility && <div> <h5>Responsibility:</h5><ul>
-                {GetStringList(data.responsibility)}
-                </ul> </div>}
-            { data.additional_detail && <div> <h5>Additional details:</h5>
-              <ul>
-                {GetStringList(data.additional_detail)}
-                </ul> </div>}
+                { GetStringList(data.total_jd)}
+              </div>
       
           </div>
         </div>

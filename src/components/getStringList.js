@@ -7,20 +7,20 @@ function GetStringList(data) {
     if(len===0){
         return "";
     }
-    const str = data.substring(1,len-3);
+    // const str = data.substring(1,len-3);
 
     // const stringArr = str.replace(/"/g, '').split(', ');
 
     
-    const regex = /"(.*?)"/g;
-    let match;
-    const result = [];
+    // const regex = /"(.*?)"/g;
+    // let match;
+    const result = data.split(".");
     
-    while ((match = regex.exec(str)) !== null) {
-        result.push(match[1]);
-    }
+    // while ((match = regex.exec(str)) !== null) {
+    //     result.push(match[1]);
+    // }
 
-    var arr = result.map((item)=><li>{item}</li>)
+    var arr = result.map((item)=><p style={{margin:"0"}}>{item}</p>)
     
     return arr;
 }

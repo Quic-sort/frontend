@@ -9,7 +9,7 @@ import GetStringList from "../getStringList";
 
 function DiscoverItems(props) {
   const {data} = props;
-  console.log(data.total_jd)
+  // console.log(data.total_jd)
   const getDate = () =>{
     // Given date in the format "MM/DD/YY"
     const givenDate = new Date(data.job_posting_date);
